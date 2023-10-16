@@ -81,7 +81,7 @@ public class CurrencyConversionController {
     private String getEnvironmentDetails() {
         String port = environment.getProperty("local.server.port");
         String host = environment.getProperty("HOSTNAME");
-        String version = "v11";
+        String version = "v12";
 
         return port + " " + version + " " + host;
     }
