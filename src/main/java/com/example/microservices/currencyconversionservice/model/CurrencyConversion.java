@@ -1,7 +1,6 @@
 package com.example.microservices.currencyconversionservice.model;
 
 import lombok.*;
-
 import java.math.BigDecimal;
 
 @Getter
