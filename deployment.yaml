@@ -26,9 +26,9 @@ spec:
       - image: docker1234anoop/currency-conversion-service:0.0.12-SNAPSHOT-amd64
         imagePullPolicy: IfNotPresent
         name: currency-conversion-service
-        env:
-          - name: CURRENCY_EXCHANGE_URI
-            value: http://currency-exchange
+        envFrom:
+          - configMapRef:
+              name: currency-conversion
       restartPolicy: Always
 ---
 apiVersion: v1
@@ -47,4 +47,11 @@ spec:
     app: currency-conversion
   sessionAffinity: None
   type: LoadBalancer
-
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: currency-conversion
+  namespace: default
+data:
+  CURRENCY-EXCHANGE-URI: http://currency-exchange
