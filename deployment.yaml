@@ -29,6 +29,14 @@ spec:
         envFrom:
           - configMapRef:
               name: currency-conversion
+        readinessProbe:
+          httpGet:
+            port: 8100
+            path: /actuator/health/readiness
+        livenessProbe:
+          httpGet:
+            port: 8100
+            path: /actuator/health/liveness
       restartPolicy: Always
 ---
 apiVersion: v1
